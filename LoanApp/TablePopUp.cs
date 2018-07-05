@@ -55,7 +55,18 @@ namespace LoanApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //inserting the payment to database
 
+             string paidAmount = textBoxAmount.Text;
+             string refNum = comboBox1.Text;
+             string date = DateTime.Today.ToString("dd-MM-yyyy"); ;
+
+            ConnectDB connection = new ConnectDB();
+            MySqlConnection con = connection.setUpConnection();
+
+            con.Open();
+
+            string query = "INSERT INTO installment(amount,RefNo,Date) VALUES ('" + paidAmount + "','" + refNum + "','" + date + "')";
         }
     }
 
