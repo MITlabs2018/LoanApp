@@ -34,23 +34,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.RefNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toBePaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtBoxSearch = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.Label();
             this.textBoxAmount = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.RefNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastPaymentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toBePaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -116,43 +116,13 @@
             this.RefNo,
             this.Amount,
             this.LastPayment,
+            this.lastPaymentDate,
             this.toBePaid,
-            this.Date,
             this.Status});
             this.dataGridView1.Location = new System.Drawing.Point(224, 55);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(554, 222);
             this.dataGridView1.TabIndex = 22;
-            // 
-            // RefNo
-            // 
-            this.RefNo.HeaderText = "Ref No.";
-            this.RefNo.Name = "RefNo";
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Borrowed Amount";
-            this.Amount.Name = "Amount";
-            // 
-            // LastPayment
-            // 
-            this.LastPayment.HeaderText = "Last Payment";
-            this.LastPayment.Name = "LastPayment";
-            // 
-            // toBePaid
-            // 
-            this.toBePaid.HeaderText = "To Be Paid";
-            this.toBePaid.Name = "toBePaid";
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Last Payment Date";
-            this.Date.Name = "Date";
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
             // 
             // label5
             // 
@@ -177,8 +147,10 @@
             // 
             this.txtBoxSearch.AutoSize = true;
             this.txtBoxSearch.Location = new System.Drawing.Point(99, 171);
+            this.txtBoxSearch.MaximumSize = new System.Drawing.Size(120, 50);
+            this.txtBoxSearch.MinimumSize = new System.Drawing.Size(120, 20);
             this.txtBoxSearch.Name = "txtBoxSearch";
-            this.txtBoxSearch.Size = new System.Drawing.Size(0, 13);
+            this.txtBoxSearch.Size = new System.Drawing.Size(120, 20);
             this.txtBoxSearch.TabIndex = 25;
             // 
             // textBox1
@@ -189,27 +161,28 @@
             this.textBox1.Size = new System.Drawing.Size(0, 13);
             this.textBox1.TabIndex = 26;
             // 
-            // textBox2
-            // 
-            this.textBox2.AutoSize = true;
-            this.textBox2.Location = new System.Drawing.Point(100, 234);
-            this.textBox2.MaximumSize = new System.Drawing.Size(0, 50);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(0, 13);
-            this.textBox2.TabIndex = 27;
-            // 
             // textBox3
             // 
             this.textBox3.AutoSize = true;
-            this.textBox3.Location = new System.Drawing.Point(99, 266);
-            this.textBox3.MaximumSize = new System.Drawing.Size(50, 0);
+            this.textBox3.Location = new System.Drawing.Point(100, 234);
+            this.textBox3.MaximumSize = new System.Drawing.Size(0, 50);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(0, 13);
-            this.textBox3.TabIndex = 28;
+            this.textBox3.TabIndex = 27;
+            // 
+            // textBox2
+            // 
+            this.textBox2.AutoSize = true;
+            this.textBox2.Location = new System.Drawing.Point(99, 266);
+            this.textBox2.MaximumSize = new System.Drawing.Size(110, 100);
+            this.textBox2.MinimumSize = new System.Drawing.Size(110, 100);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(110, 100);
+            this.textBox2.TabIndex = 28;
             // 
             // textBoxAmount
             // 
-            this.textBoxAmount.Location = new System.Drawing.Point(371, 358);
+            this.textBoxAmount.Location = new System.Drawing.Point(488, 367);
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.Size = new System.Drawing.Size(102, 20);
             this.textBoxAmount.TabIndex = 29;
@@ -217,7 +190,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(324, 361);
+            this.label10.Location = new System.Drawing.Point(441, 370);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(43, 13);
             this.label10.TabIndex = 30;
@@ -226,7 +199,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(169, 356);
+            this.comboBox1.Location = new System.Drawing.Point(286, 365);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 31;
@@ -234,7 +207,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(124, 359);
+            this.label11.Location = new System.Drawing.Point(241, 368);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(39, 13);
             this.label11.TabIndex = 32;
@@ -242,13 +215,43 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(514, 356);
+            this.button1.Location = new System.Drawing.Point(631, 365);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 29);
             this.button1.TabIndex = 33;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // RefNo
+            // 
+            this.RefNo.HeaderText = "Ref No.";
+            this.RefNo.Name = "RefNo";
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Borrowed Amount";
+            this.Amount.Name = "Amount";
+            // 
+            // LastPayment
+            // 
+            this.LastPayment.HeaderText = "Last Payment";
+            this.LastPayment.Name = "LastPayment";
+            // 
+            // lastPaymentDate
+            // 
+            this.lastPaymentDate.HeaderText = "Last Payment Date";
+            this.lastPaymentDate.Name = "lastPaymentDate";
+            // 
+            // toBePaid
+            // 
+            this.toBePaid.HeaderText = "To Be Paid";
+            this.toBePaid.Name = "toBePaid";
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
             // 
             // TablePopUp
             // 
@@ -260,8 +263,8 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBoxAmount);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtBoxSearch);
             this.Controls.Add(this.btnClose);
@@ -274,6 +277,7 @@
             this.Controls.Add(this.label2);
             this.Name = "TablePopUp";
             this.Text = "TablePopUp";
+            this.Load += new System.EventHandler(this.TablePopUp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -291,20 +295,20 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RefNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastPayment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn toBePaid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.Label txtBoxSearch;
         private System.Windows.Forms.Label textBox1;
-        private System.Windows.Forms.Label textBox2;
         private System.Windows.Forms.Label textBox3;
+        private System.Windows.Forms.Label textBox2;
         private System.Windows.Forms.TextBox textBoxAmount;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RefNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastPayment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastPaymentDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn toBePaid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }

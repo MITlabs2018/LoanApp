@@ -16,6 +16,7 @@ namespace LoanApp
     public partial class TablePopUp : Form
     {
         string id;
+        String debtorsID;
        
         public TablePopUp(string var)
         {
@@ -37,20 +38,36 @@ namespace LoanApp
                 textBox1.Text = var.ToString();
                 while (rdr.Read())
                 {
+                    debtorsID = rdr.GetValue(0).ToString();
                     txtBoxSearch.Text = rdr.GetValue(1).ToString();
-                    textBox2.Text = rdr.GetValue(5).ToString();
                     textBox3.Text = rdr.GetValue(4).ToString();
+                    textBox2.Text = rdr.GetValue(5).ToString();
    
                 }
 
-            rdr.Close();
-            con.Close();
+                rdr.Close();
+
+                string query2 = "SELECT loan.RefNo FROM loan WHERE loan.DebtorsID =@debtorsID";
+                MySqlCommand cmd4 = new MySqlCommand(query2, con);
+                cmd4.Parameters.AddWithValue("@debtorsID", debtorsID);
+                MySqlDataReader rdr2 = cmd4.ExecuteReader();
+
+                while (rdr2.Read())
+                {
+                    comboBox1.Items.Add(rdr2.GetValue(0));
+                }
+
+
+                rdr2.Close();
+                con.Close();
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
+
+            updateTable();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -67,6 +84,21 @@ namespace LoanApp
             con.Open();
 
             string query = "INSERT INTO installment(amount,RefNo,Date) VALUES ('" + paidAmount + "','" + refNum + "','" + date + "')";
+
+            con.Close();
+        }
+
+        private void updateTable() {
+            fillTable fillTable = new fillTable();
+
+            String query = "SELECT loan.RefNo,loan.Amount AS Amount,installment.amount AS LastPayment,installment.Date,(loan.Amount - (SELECT SUM(installment.amount) FROM  installment WHERE installment.RefNo = loan.RefNo GROUP BY RefNo)) AS'toBePaid',loan.Status FROM loan,installment WHERE loan.RefNo = installment.RefNo AND installment.Date = (SELECT installment.Date FROM installment WHERE installment.RefNo = loan.RefNo ORDER BY installment.Date DESC LIMIT 1) AND loan.DebtorsID ="+debtorsID;
+            String[] colNames = { "RefNo", "Amount", "LastPayment", "lastPaymentDate", "toBePaid", "Status" };
+            fillTable.DrawTable(dataGridView1,colNames, query);
+        }
+
+        private void TablePopUp_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

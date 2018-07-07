@@ -104,3 +104,4 @@ C:\Users\X550\Documents\GitHub\LoanApp\LoanApp\obj\Debug\LoanApp.Login.resources
 C:\Users\X550\Documents\GitHub\LoanApp\LoanApp\obj\Debug\LoanApp.Properties.Resources.resources
 C:\Users\X550\Documents\GitHub\LoanApp\LoanApp\obj\Debug\LoanApp.TablePopUp.resources
 C:\Users\X550\Documents\GitHub\LoanApp\LoanApp\obj\Debug\LoanApp.csproj.GenerateResource.Cache
+C:\Users\Rasitha\Documents\GitHub\LoanApp\LoanApp\obj\Debug\LoanApp.Login.resources
