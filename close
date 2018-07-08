@@ -1,0 +1,43 @@
+[33mcommit 54d01c63736ce4ddee720211b0256cb5501ce7ed[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 53667a7 efffe91
+Author: Rasitha Gamage <g.rasitha@gmail.com>
+Date:   Sat Jul 7 19:04:48 2018 +0530
+
+    Merge pull request #1 from MITlabs2018/master
+    
+    Just updating my Fork
+
+[33mcommit efffe91debfacabe84bfc2d149217644a1a9c900[m[33m ([m[1;31mupstream/master[m[33m)[m
+Author: akalanka345 <akalanka_9@yahoo.com>
+Date:   Thu Jul 5 15:06:31 2018 +0530
+
+    payment inserting is done
+
+[33mcommit d548d58c48b53750cc1ddfd1fa0a92ec4b58f0ad[m
+Author: akalanka345 <akalanka_9@yahoo.com>
+Date:   Thu Jul 5 12:12:24 2018 +0530
+
+    Login
+    
+    Login is completed with the interface
+
+[33mcommit 04f7268037daf8f978664c0e778f50e21f8598ac[m
+Merge: bb4b91c 53667a7
+Author: Rasitha Gamage <g.rasitha@gmail.com>
+Date:   Tue Jul 3 15:14:55 2018 +0530
+
+    Merge pull request #1 from RasithaGamage/master
+    
+    Commit 1
+
+[33mcommit 53667a7b3f64fa287a0d9825b420aada2ec5b981[m[33m ([m[1;31morigin/LoanAppBranch1[m[33m, [m[1;32mLoanAppBranch1[m[33m)[m
+Author: Rasitha Gamage <g.rasitha@gmail.com>
+Date:   Tue Jul 3 15:13:58 2018 +0530
+
+    Commit 1
+
+[33mcommit bb4b91c6412fee10cd5be2f5672d51ea104c979c[m
+Author: akalanka345 <akalanka_9@yahoo.com>
+Date:   Tue Jul 3 14:18:02 2018 +0530
+
+    project files
