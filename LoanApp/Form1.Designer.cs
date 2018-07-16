@@ -773,9 +773,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 505);
+            this.Controls.Add(this.panelAddLoanDetails);
             this.Controls.Add(this.panelDebtorsList);
             this.Controls.Add(this.panelAddNewDebtor);
-            this.Controls.Add(this.panelAddLoanDetails);
             this.Controls.Add(this.panelReport);
             this.Controls.Add(this.panelHome);
             this.Controls.Add(this.sidePanelClerkSup);
