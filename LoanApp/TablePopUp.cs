@@ -70,33 +70,60 @@ namespace LoanApp
             updateTable();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //inserting the payment to database
-
-             string paidAmount = textBoxAmount.Text;
-             string refNum = comboBox1.Text;
-             string date = DateTime.Today.ToString("dd-MM-yyyy"); ;
-
-            ConnectDB connection = new ConnectDB();
-            MySqlConnection con = connection.setUpConnection();
-
-            con.Open();
-
-            string query = "INSERT INTO installment(amount,RefNo,Date) VALUES ('" + paidAmount + "','" + refNum + "','" + date + "')";
-
-            con.Close();
-        }
 
         private void updateTable() {
             fillTable fillTable = new fillTable();
 
-            String query = "SELECT loan.RefNo,loan.Amount AS Amount,installment.amount AS LastPayment,installment.Date,(loan.Amount - (SELECT SUM(installment.amount) FROM  installment WHERE installment.RefNo = loan.RefNo GROUP BY RefNo)) AS'toBePaid',loan.Status FROM loan,installment WHERE loan.RefNo = installment.RefNo AND installment.Date = (SELECT installment.Date FROM installment WHERE installment.RefNo = loan.RefNo ORDER BY installment.Date DESC LIMIT 1) AND loan.DebtorsID ="+debtorsID;
+            //String query = "SELECT loan.RefNo,loan.Amount AS Amount,installment.amount AS LastPayment,installment.Date,(loan.Amount - (SELECT SUM(installment.amount) FROM  installment WHERE installment.RefNo = loan.RefNo GROUP BY RefNo)) AS'toBePaid',loan.Status FROM loan,installment WHERE loan.RefNo = installment.RefNo AND installment.Date = (SELECT installment.Date FROM installment WHERE installment.RefNo = loan.RefNo ORDER BY installment.Date DESC LIMIT 1) AND loan.DebtorsID ="+debtorsID;
+
+            String query = "SELECT loan.RefNo,loan.Amount AS Amount,installment.amount AS LastPayment,installment.Date,'toBePaid',loan.Status FROM loan,installment WHERE loan.RefNo = installment.RefNo AND installment.Date = (SELECT installment.Date FROM installment WHERE installment.RefNo = loan.RefNo ORDER BY installment.Date DESC LIMIT 1) AND loan.DebtorsID ="+debtorsID;
             String[] colNames = { "RefNo", "Amount", "LastPayment", "lastPaymentDate", "toBePaid", "Status" };
             fillTable.DrawTable(dataGridView1,colNames, query);
         }
 
+
+
         private void TablePopUp_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //inserting the payment to database
+
+            string paidAmount = textBoxAmount.Text;
+            string refNum = comboBox1.Text;
+            DateTime currentTime = DateTime.Now;
+            dateTimePicker1.Value = currentTime;
+            string date = dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss");//date = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+
+            ConnectDB connection = new ConnectDB();
+            MySqlConnection con = connection.setUpConnection();
+
+            try {
+                con.Open();
+                string query = "INSERT INTO installment(amount,RefNo,Date) VALUES ('" + paidAmount + "','" + refNum + "','" + date + "')";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.ToString());
+            }
+
+            updateTable();
+            label9.Text = "Updated !";
+            textBoxAmount.Text= "";
+            comboBox1.Text = "";
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }
